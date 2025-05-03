@@ -8,7 +8,9 @@ import { AppService } from './app.service';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
-import { PostModule } from './post/post.module';
+import { TasksModule } from './tasks/tasks.module';
+import { CategoriesModule } from './categories/categories.module';
+import { NotesModule } from './notes/notes.module';
 
 @Module({
   imports: [
@@ -33,7 +35,9 @@ import { PostModule } from './post/post.module';
     }),
     AuthModule,
     UserModule,
-    PostModule
+    TasksModule,
+    CategoriesModule,
+    NotesModule,
   ],
   controllers: [AppController],
   providers: [
@@ -43,4 +47,4 @@ import { PostModule } from './post/post.module';
     AppService,
   ],
 })
-export class AppModule {}
+export class AppModule { }

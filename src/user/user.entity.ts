@@ -1,7 +1,11 @@
+import { Category } from 'src/categories/category.entity';
+import { Note } from 'src/notes/note.entity';
+import { Task } from 'src/tasks/task.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -23,8 +27,14 @@ export class User {
   @Column()
   profile_picture: string;
 
-  @Column()
-  bio: string;
+  @OneToMany(() => Task, (task) => task.user)
+  tasks: Task[];
+
+  @OneToMany(() => Category, (category) => category.user)
+  categories: Category[];
+
+  @OneToMany(() => Note, (note) => note.user)
+  notes: Note[]; // Sesuaikan nama 'notes' jika perlu
 
   @CreateDateColumn()
   created_at: Date;
